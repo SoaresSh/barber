@@ -1,4 +1,6 @@
 package com.barber.api.domain.dtos.request
 
-class LoginRequestDto {
-}
+data class LoginRequestDto (
+    var cpfCnpj:String,
+    var password:String,
+)

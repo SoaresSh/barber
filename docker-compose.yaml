@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql57:
+    image: mysql:8.0.29
+    restart: unless-stopped
+    container_name: barber
+    ports:
+      - "127.0.0.1:3308:3306"
+    environment:
+      MYSQL_ROOT_USER: barber
+      MYSQL_ROOT_PASSWORD: barber
+      MYSQL_DATABASE: barber
+      MYSQL_USER: barber
+      MYSQL_PASSWORD: barber
+    volumes:
+      - .db:/var/lib/mysql
+volumes:
+  cache:
+    driver: local

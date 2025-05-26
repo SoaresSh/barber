@@ -2,25 +2,28 @@ package com.barber.api.domain.entities
 
 import jakarta.persistence.*
 
-@Table(name = "enterprises")
+@Table(name = "enterprise")
 @Entity
 data class Enterprise(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
-    var id:Long? = null,
+    var id: Long?,
 
-    @Column(name = "Name")
-    var Name:String? = null,
+    @Column(name = "name")
+    var name:String?,
 
-    @Column(name = "Email")
-    var email:String? = null,
+    @Column(name = "email")
+    var email:String?,
 
     @Column(name = "password")
     var password: String,
 
-    @Column(name = "Cnpj")
-    var Cnpj: String,
+    @Column(name = "cnpj")
+    var cnpj: String,
+
+    @Column(name = "endereco")
+    var endereco: String,
 
     )

@@ -1,7 +1,7 @@
 package com.barber.api.infrastructure.repository
 
-import com.barber.api.domain.entities.User
+import com.barber.api.domain.entities.Enterprise
 import org.springframework.data.repository.CrudRepository
 
-interface UserRepository : CrudRepository<User, Long>
+interface EnterpriseRepository : CrudRepository<Enterprise, Long>
 

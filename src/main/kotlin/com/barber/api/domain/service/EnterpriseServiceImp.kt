@@ -1,66 +1,58 @@
 package com.barber.api.domain.service
 
-import com.barber.api.domain.dtos.request.UserRequestDto
-import com.barber.api.domain.dtos.response.UserResponseDto
-import com.barber.api.domain.entities.User
-import com.barber.api.infrastructure.repository.UserRepository
+import com.barber.api.domain.dtos.request.EnterpriseRequestDto
+import com.barber.api.domain.dtos.response.EnterpriseResponseDto
+import com.barber.api.domain.entities.Enterprise
+import com.barber.api.infrastructure.repository.EnterpriseRepository
 import org.springframework.stereotype.Service
 
 @Service
-class UserServiceImp (
-    private val userRepository: UserRepository
-):UserServiceInterface {
-    override fun save(userRequestDto: UserRequestDto): UserResponseDto {
-        val user = userRepository.save(
-            User(
-                firstName = userRequestDto.firstName,
-                lastName = userRequestDto.lastName,
-                //birthdate = userRequestDto.birthDate,
-                email = userRequestDto.email,
-                password = userRequestDto.password,
-                cpf = userRequestDto.cpf,
-                barber = userRequestDto.barber
+class EnterpriseServiceImp (
+    private val enterpriseRepository: EnterpriseRepository
+):EnterpriseServiceInterface {
+    override fun save(enterpriseRequestDto: EnterpriseRequestDto): EnterpriseResponseDto {
+        val enterprise = enterpriseRepository.save(
+            Enterprise(
+                id = enterpriseRequestDto.id,
+                name = enterpriseRequestDto.name,
+                email = enterpriseRequestDto.email,
+                password = enterpriseRequestDto.password,
+                cnpj = enterpriseRequestDto.cnpj,
+                endereco = enterpriseRequestDto.endereco,
             )
         )
-        return UserResponseDto(
-            id = user.id,
-            firstName = user.firstName,
-            lastName = user.lastName,
-            //birthdate = user.birthDate,
-            email = user.email,
-            password = user.password,
-            cpf = user.cpf,
-            barber = user.barber
+        return EnterpriseResponseDto(
+            id = enterprise.id,
+            name = enterprise.name,
+            email = enterprise.email,
+            password = enterprise.password,
+            cnpj = enterprise.cnpj,
+            endereco = enterprise.endereco
+
         )
     }
 
-    override fun update(id:Long, userRequestDto: UserRequestDto): UserResponseDto {
-        val user = userRepository.findById(id).orElseThrow{
+    override fun update(id:Long, enterpriseRequestDto: EnterpriseRequestDto): EnterpriseResponseDto {
+        val enterprise = enterpriseRepository.findById(id).orElseThrow{
             IllegalArgumentException("Erro");
         }
 
 
-        user.firstName = userRequestDto.firstName
-        user.lastName = userRequestDto.lastName
-        //birthdate = userRequestDto.birthDate
-        user.email = userRequestDto.email
-        user.password = userRequestDto.password
-        user.cpf = userRequestDto.cpf
+        enterprise.name = enterpriseRequestDto.name
+        enterprise.email = enterpriseRequestDto.email
+        enterprise.password = enterpriseRequestDto.password
+        enterprise.cnpj = enterpriseRequestDto.cnpj
 
-        val userUpdate = userRepository.save(user)
-        return UserResponseDto(
-            id = userUpdate.id,
-            firstName = userUpdate.firstName,
-            lastName = userUpdate.lastName,
-            //birthdate = userUpdate.birthDate,
-            email = userUpdate.email,
-            password = userUpdate.password,
-            cpf = userUpdate.cpf,
-            barber = userUpdate.barber
+        val enterpriseUpdate = enterpriseRepository.save(enterprise)
+        return EnterpriseResponseDto(
+            id = enterpriseUpdate.id,
+            name = enterpriseUpdate.name,
+            email = enterpriseUpdate.email,
+            password = enterpriseUpdate.password,
+            cnpj = enterpriseUpdate.cnpj,
+            endereco = enterpriseUpdate.endereco
         )
     }
 
-//    override fun delete(id: Long, userRequestDto: UserRequestDto): UserResponseDto {
-//        TODO("Not yet implemented")
-//    }
+
 }

@@ -1,11 +1,10 @@
 package com.barber.api.domain.service
 
-import com.barber.api.domain.dtos.request.UserRequestDto
-import com.barber.api.domain.dtos.response.UserResponseDto
-import com.barber.api.domain.entities.User
+import com.barber.api.domain.dtos.request.EnterpriseRequestDto
+import com.barber.api.domain.dtos.response.EnterpriseResponseDto
 
-interface UserServiceInterface {
-    fun save(userRequestDto: UserRequestDto): UserResponseDto
-    //fun delete(id:Long, userRequestDto: UserRequestDto): UserResponseDto
-    fun update(id:Long, userRequestDto: UserRequestDto): UserResponseDto
+interface EnterpriseServiceInterface {
+    fun save(enterpriseRequestDto: EnterpriseRequestDto): EnterpriseResponseDto
+    //fun delete(id:Long, enterpriseRequestDto: EnterpriseRequestDto): EnterpriseResponseDto
+    fun update(id:Long, enterpriseRequestDto: EnterpriseRequestDto): EnterpriseResponseDto
 }
